@@ -63,7 +63,7 @@ function NovaConta(){
           <Link to="/app" className="mx-3">Já tenho uma conta.</Link>
         </div>
 
-        <p className="mt-5 mb-3 text-muted">&copy; Desenvolvido por 99 Coders</p>
+        <p className="mt-5 mb-3 text-muted">&copy; Guilherme Varella</p>
       </form>
     </div>
   }

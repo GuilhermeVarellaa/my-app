@@ -61,7 +61,7 @@ function Login(){
           <Link to="/app/novaconta" className="mx-3">Criar uma conta</Link>
         </div>
 
-        <p className="mt-5 mb-3 text-muted">&copy; Desenvolvido por 99 Coders</p>
+        <p className="mt-5 mb-3 text-muted">&copy; Guilherme Varella</p>
       </form>
     </div>
   }

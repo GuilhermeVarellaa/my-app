@@ -27,7 +27,7 @@ function clientesPDF(clientes){
         {
             table:{
                 headerRows: 1,
-                widths: ['*', '*', '*', '*'],
+                widths: ['*', '*', '*', '*','*'],
                 body: [
                     [
                         {text: 'Código', style: 'tableHeader', fontSize: 10},

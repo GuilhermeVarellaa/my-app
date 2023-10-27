@@ -60,9 +60,9 @@ function NovoCliente(){
                 <input  onChange={(e) => setFone(e.target.value)} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />              
               </div>
 
-              <div className="mb-3">
+              <div className="mb-4">
                 <label htmlFor="exampleInputEmail1" className="form-label">Sexo</label>
-                <input  onChange={(e) => setSexo(e.target.value)} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />              
+                <input  onChange={(e) => setSexo(e.target.value)} type="text" className="form-control" id="sexoInput" aria-describedby="emailHelp" />              
               </div>
 
               <div className="text-center">
