@@ -41,7 +41,7 @@ function Home(){
                 listaCli.push({
                         id: doc.id,
                         nome: doc.data().nome,
-                        email: doc.data().email,
+                        endereco: doc.data().endereco,
                         fone: doc.data().fone,
                         sexo: doc.data().sexo
                     });

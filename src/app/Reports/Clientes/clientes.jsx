@@ -17,7 +17,7 @@ function clientesPDF(clientes){
         return [
             {text: cliente.id, fontSize: 9, margin: [0, 2, 0, 2]},
             {text: cliente.nome, fontSize: 9, margin: [0, 2, 0, 2]},
-            {text: cliente.email, fontSize: 9, margin: [0, 2, 0, 2]},
+            {text: cliente.endereco, fontSize: 9, margin: [0, 2, 0, 2]},
             {text: cliente.fone, fontSize: 9, margin: [0, 2, 0, 2]},
             {text: cliente.sexo, fontSize: 9, margin: [0, 2, 0, 2]}
         ] 
@@ -32,7 +32,7 @@ function clientesPDF(clientes){
                     [
                         {text: 'Código', style: 'tableHeader', fontSize: 10},
                         {text: 'Nome', style: 'tableHeader', fontSize: 10},
-                        {text: 'E-mail', style: 'tableHeader', fontSize: 10},
+                        {text: 'Endereço', style: 'tableHeader', fontSize: 10},
                         {text: 'Telefone', style: 'tableHeader', fontSize: 10},
                         {text: 'Sexo', style: 'tableHeader', fontSize: 10},
 

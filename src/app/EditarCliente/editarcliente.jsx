@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import {Link, Redirect}  from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import Navbar from '../Components/Navbar/navbar';
 import './editarcliente.css';
 import firebase from '../Config/firebase';
 import 'firebase/firestore';
+import ClientChangeHistory from '../Historico/ClientChangeHistory';
 
-function EditarCliente(props){
-
+function EditarCliente(props) {
     const [nome, setNome] = useState('');
-    const [email, setEmail] = useState('');
+    const [endereco, setEndereco] = useState('');
     const [fone, setFone] = useState('');
     const [sexo, setSexo] = useState('');
     const [mensagem, setMensagem] = useState('');
@@ -18,80 +18,115 @@ function EditarCliente(props){
     useEffect(() => {
         firebase.firestore().collection('clientes').doc(props.match.params.id).get().then((resultado) => {
             setNome(resultado.data().nome);
-            setEmail(resultado.data().email);
+            setEndereco(resultado.data().endereco);
             setFone(resultado.data().fone);
             setSexo(resultado.data().sexo);
-        })
-    }, [props.match.params.id])
+        });
+    }, [props.match.params.id]);
 
-    function AlterarCliente(){
+    function createChangeRecord(fieldName, oldValue, newValue) {
+        return {
+            fieldName,
+            oldValue,
+            newValue,
+            timestamp: new Date(),
+        };
+    }
 
-      if (nome.length === 0){
-        setMensagem('Informe o nome');
-      }
-      else if (email.length === 0){
-        setMensagem('Informe o e-mail');
-      }
-      else{
-          db.collection('clientes').doc(props.match.params.id).update({
-            nome: nome,
-            email: email,
-            fone: fone,
-            sexo: sexo,
-          }).then(() => {
-            setMensagem('');
-            setSucesso('S');
-          }).catch((erro) =>{
-            setMensagem(erro);
-            setSucesso('N');
-          })
+    function AlterarCliente() {
+        if (nome.length === 0) {
+            setMensagem('Informe o nome');
+        } else if (endereco.length === 0) {
+            setMensagem('Informe o endereço');
+        } else {
+            db.collection('clientes')
+                .doc(props.match.params.id)
+                .get()
+                .then((doc) => {
+                    const data = doc.data();
+                    const changes = [];
+
+                    if (data.nome !== nome) {
+                        changes.push(createChangeRecord('nome', data.nome, nome));
+                    }
+                    if (data.endereco !== endereco) {
+                        changes.push(createChangeRecord('endereco', data.endereco, endereco));
+                    }
+                    if (data.fone !== fone) {
+                        changes.push(createChangeRecord('fone', data.fone, fone));
+                    }
+                    if (data.sexo !== sexo) {
+                        changes.push(createChangeRecord('sexo', data.sexo, sexo));
+                    }
+
+                    return db.collection('clientes').doc(props.match.params.id).update({
+                        nome: nome,
+                        endereco: endereco,
+                        fone: fone,
+                        sexo: sexo,
+                    }).then(() => {
+                        setMensagem('');
+                        setSucesso('S');
+
+                        if (changes.length > 0) {
+                            db.collection('client_history')
+                                .doc(props.match.params.id)
+                                .collection('changes')
+                                .add({
+                                    timestamp: new Date(),
+                                    changes,
+                                });
+                        }
+                    });
+                })
+                .catch((erro) => {
+                    setMensagem(erro);
+                    setSucesso('N');
+                });
         }
-      }
+    }
 
-    return <div>
-        <Navbar/>
-        <div className="container-fluid titulo">
+    return (
+        <div>
+            <Navbar />
+            <div className="container-fluid titulo">
+                <div className="offset-lg-3 col-lg-6">
+                    <h1>Editar Cliente</h1>
+                    <form>
+                        <div className="mb-3">
+                            <label htmlFor="exampleInputEmail1" className="form-label">Nome</label>
+                            <input onChange={(e) => setNome(e.target.value)} value={nome} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                        </div>
 
-          <div className="offset-lg-3 col-lg-6">
-            <h1>Editar Cliente</h1>
-            <form>
-              <div className="mb-3">
-                <label htmlFor="exampleInputEmail1" className="form-label">Código</label>
-                <input type="text" value={props.match.params.id} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" disabled />
-              </div>
+                        <div className="mb-3">
+                            <label htmlFor="exampleInputEmail1" className="form-label">Endereço</label>
+                            <input onChange={(e) => setEndereco(e.target.value)} value={endereco} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                        </div>
 
-              <div className="mb-3">
-                <label htmlFor="exampleInputEmail1" className="form-label">Nome</label>
-                <input onChange={(e) => setNome(e.target.value)} value={nome} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />              
-              </div>
+                        <div className="mb-3">
+                            <label htmlFor="exampleInputEmail1" className="form-label">Fone</label>
+                            <input onChange={(e) => setFone(e.target.value)} value={fone} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                        </div>
 
-              <div className="mb-3">
-                <label htmlFor="exampleInputEmail1" className="form-label">E-mail</label>
-                <input onChange={(e) => setEmail(e.target.value)} value={email} type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />              
-              </div>
+                        <div className="mb-4">
+                            <label htmlFor="exampleInputEmail1" className="form-label">Sexo</label>
+                            <input onChange={(e) => setSexo(e.target.value)} value={sexo} type="text" className="form-control" id="sexoInput" aria-describedby="emailHelp" />
+                        </div>
 
-              <div className="mb-3">
-                <label htmlFor="exampleInputEmail1" className="form-label">Fone</label>
-                <input  onChange={(e) => setFone(e.target.value)} value={fone} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />              
-              </div>
+                        <div className="text-center">
+                            <Link to="/app/home" className="btn btn-outline-primary btn-acao">Cancelar</Link>
+                            <button onClick={AlterarCliente} type="button" className="btn btn-primary btn-acao">Salvar</button>
+                        </div>
 
-              <div className="mb-4">
-                <label htmlFor="exampleInputEmail1" className="form-label">Sexo</label>
-                <input  onChange={(e) => setSexo(e.target.value)} value={sexo} type="text" className="form-control" id="sexoInput" aria-describedby="emailHelp" />              
-              </div>
+                        {mensagem.length > 0 ? <div className="alert alert-danger mt-2" role="alert">{mensagem}</div> : null}
+                        {sucesso === 'S' ? <Redirect to='/app/home' /> : null}
+                    </form>
+                </div>
+            </div>
 
-              <div className="text-center">
-                <Link to="/app/home" className="btn btn-outline-primary btn-acao">Cancelar</Link>
-                <button onClick={AlterarCliente} type="button" className="btn btn-primary btn-acao">Salvar</button>
-              </div>
-
-              {mensagem.length > 0 ? <div className="alert alert-danger mt-2" role="alert">{mensagem}</div> : null}
-              {sucesso === 'S' ? <Redirect to='/app/home' /> : null}
-
-            </form>
-          </div>
+            <ClientChangeHistory clientId={props.match.params.id} />
         </div>
-    </div>;  
-  }
+    );
+}
 
 export default EditarCliente;

@@ -9,7 +9,7 @@ function ListaClientes(props){
             <tr className="table-secondary">
                 <th scope="col">Código</th>
                 <th scope="col">Nome</th>
-                <th scope="col">E-mail</th>
+                <th scope="col">Endereço</th>
                 <th scope="col">Telefone</th>
                 <th scope="col">Sexo</th>
                 <th scope="col" className="col-acao"></th>
@@ -22,7 +22,7 @@ function ListaClientes(props){
                     return <tr key={cliente.id}>
                     <th scope="row">{cliente.id}</th>
                     <td>{cliente.nome}</td>
-                    <td>{cliente.email}</td>
+                    <td>{cliente.endereco}</td>
                     <td>{cliente.fone}</td>
                     <td>{cliente.sexo}</td>
                     <td>

@@ -7,7 +7,7 @@ import firebase from '../Config/firebase';
 function NovoCliente(){
 
     const [nome, setNome] = useState('');
-    const [email, setEmail] = useState('');
+    const [endereco, setEdereco] = useState('');
     const [fone, setFone] = useState('');
     const [sexo, setSexo] = useState('');
     const [mensagem, setMensagem] = useState('');
@@ -19,13 +19,13 @@ function NovoCliente(){
       if (nome.length === 0){
         setMensagem('Informe o nome');
       }
-      else if (email.length === 0){
+      else if (endereco.length === 0){
         setMensagem('Informe o e-mail');
       }
       else{
           db.collection('clientes').add({
             nome: nome,
-            email: email,
+            endereco: endereco,
             fone: fone,
             sexo: sexo,
           }).then(() => {
@@ -51,8 +51,8 @@ function NovoCliente(){
               </div>
 
               <div className="mb-3">
-                <label htmlFor="exampleInputEmail1" className="form-label">E-mail</label>
-                <input onChange={(e) => setEmail(e.target.value)} type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />              
+                <label htmlFor="exampleInputEmail1" className="form-label">Endereço</label>
+                <input onChange={(e) => setEdereco(e.target.value)} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />              
               </div>
 
               <div className="mb-3">
