@@ -7,22 +7,48 @@ function ClientChangeHistory(props) {
 
     useEffect(() => {
         // Load change history for the client
-        db.collection('client_history')
+        const unsubscribe = db
+            .collection('client_history')
             .doc(props.clientId)
             .collection('changes')
             .orderBy('timestamp', 'desc')
             .onSnapshot((snapshot) => {
                 const history = [];
+
                 snapshot.forEach((doc) => {
-                    history.push(doc.data());
+                    const data = doc.data();
+
+                    // Check if the data is different from the last entry in the history
+                    if (
+                        history.length === 0 ||
+                        !isDataEqual(history[0], data)
+                    ) {
+                        history.unshift(data);
+                    }
                 });
+
                 setChangeHistory(history);
             });
+
+        return () => {
+            // Unsubscribe from the snapshot listener when the component unmounts
+            unsubscribe();
+        };
     }, [props.clientId, db]);
+
+    // Function to compare if two data objects are equal
+    const isDataEqual = (data1, data2) => {
+        // Implement your comparison logic here, e.g., compare field values
+        return (
+            data1.fieldName === data2.fieldName &&
+            data1.oldValue === data2.oldValue &&
+            data1.newValue === data2.newValue
+        );
+    };
 
     return (
         <div>
-            <h2>Historico de mudança</h2>
+            <h2>Histórico de mudanças</h2>
             <ul>
                 {changeHistory.map((entry, index) => (
                     <li key={index}>

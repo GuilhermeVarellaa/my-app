@@ -20,7 +20,7 @@ function Features(){
                 <div className="col-lg-4 feature-box">
                     <i className="icon fas fa-columns fa-5x"></i>
                     <h3>Organização é tudo</h3>
-                    <p>Tenha sua carteira de clientes sempre muito bem organizada.</p>
+                    <p>Tenha o controle de seus funcionarios sempre muito bem organizado.</p>
                 </div>
                        
             </div>

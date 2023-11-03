@@ -43,7 +43,12 @@ function Home(){
                         nome: doc.data().nome,
                         endereco: doc.data().endereco,
                         fone: doc.data().fone,
-                        sexo: doc.data().sexo
+                        sexo: doc.data().sexo,
+                        nascimento: doc.data().nascimento,
+                        cargo: doc.data().cargo,
+                        adm: doc.data().adm,
+                        setor: doc.data().setor,
+                        salario: doc.data().salario,
                     });
                 }
           })

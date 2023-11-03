@@ -20,13 +20,7 @@ function Menu(){
             </li>
             <li className="nav-item">
               <a className="nav-link" aria-current="page" href="#features">Features</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" aria-current="page" href="#testemunho">Clientes</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" aria-current="page" href="#preco">Planos e Preços</a>
-            </li>
+            </li>  
             <li className="nav-item">
               <a className="nav-link" aria-current="page" href="#footer">Contato</a>
             </li>

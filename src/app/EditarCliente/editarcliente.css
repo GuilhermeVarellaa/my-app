@@ -1,0 +1,72 @@
+.elementos{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    
+}
+
+
+.telemail{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 2rem;
+    width: 100%;
+   
+
+}
+
+.nascimento{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 2rem;
+    width: 100%;
+
+}
+
+
+.Forms{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+   
+ 
+}
+
+.classform{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 600px;
+}
+
+.input{
+    width: 100%;
+    height: 45px;
+    background-color: rgb(231, 231, 231);
+    border: none;
+    padding-left: 1rem ;
+    border-radius: 5px;
+    color: gray;
+}
+.nomes{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+}
+.informacoes{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+}
+.foto{
+    background: grey;
+    width: 25%;
+    height: 114px;
+}

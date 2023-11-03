@@ -51,35 +51,12 @@ p{
 }
 
 
-/* TESTEMUNHOS */
-
-#testemunho{
-    background-color: #f3f3f3;
-    color: #323338;
-    padding: 7% 15%;
-    text-align: center;
-}
-
-#testemunho img {
-    border-radius: 50%;
-    width: 10%;
-    margin: 20px;
-}
 
 
-/* PRECOS */
-
-#preco .titulo{
-    margin-top: 5%;
-}
-
-#preco{
-    padding: 5% 15% 8%;
-    color: #323338;
-}
 
 
-/* FOOTER */
+
+/* footer */
 
 #footer{
     padding: 3% 15%;

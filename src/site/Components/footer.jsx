@@ -12,8 +12,8 @@ function Footer(){
                 <li className="list-inline-item"><a href="/#" target="_blank"><i className="fa fa-envelope fa-2x"></i></a></li>
             </ul>
 	    </div>
-      <a href="mailto:heber@99coders.com.br">heber@99coders.com.br</a>
-      <p>Desenvolvido por 99 Coders - {ano}</p>
+      <a href="guilhermeraul1@hotmail.com">guilhermeraul1@hotmail.com</a>
+      <p>Desenvolvido por Guilherme Varella - {ano}</p>
 
     </section>;
   }

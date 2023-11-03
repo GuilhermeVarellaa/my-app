@@ -12,6 +12,11 @@ function ListaClientes(props){
                 <th scope="col">Endereço</th>
                 <th scope="col">Telefone</th>
                 <th scope="col">Sexo</th>
+                <th scope="col">Nascimento</th>
+                <th scope="col">Cargo</th>
+                <th scope="col">Data de Admissão</th>
+                <th scope="col">Setor</th>
+                <th scope="col">Salário</th>
                 <th scope="col" className="col-acao"></th>
             </tr>
             </thead>
@@ -25,6 +30,11 @@ function ListaClientes(props){
                     <td>{cliente.endereco}</td>
                     <td>{cliente.fone}</td>
                     <td>{cliente.sexo}</td>
+                    <td>{cliente.nascimento}</td>
+                    <td>{cliente.cargo}</td>
+                    <td>{cliente.adm}</td>
+                    <td>{cliente.setor}</td>
+                    <td>{cliente.salario}</td>
                     <td>
                         <Link to={'/app/editarcliente/' + cliente.id}><i className="fas fa-edit icone-acao"></i></Link>
                         <Link to='#' onClick={() => props.clickDelete(cliente.id)}><i className="far fa-trash-alt icone-acao red"></i></Link>

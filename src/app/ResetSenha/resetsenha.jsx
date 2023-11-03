@@ -42,7 +42,6 @@ function ResetSenha(){
           <Link to="/app/novaconta" className="mx-3">Criar uma conta.</Link>
         </div>
 
-        <p className="mt-5 mb-3 text-muted">&copy; Desenvolvido por 99 Coders</p>
       </form>
     </div>
   }
