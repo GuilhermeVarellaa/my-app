@@ -30,7 +30,7 @@ function Navbar(){
               <Link to="/app/home" className="nav-link" aria-current="page" >Home</Link>
             </li>
             <li className="nav-item">
-            <Link to="/app/novocliente" className="nav-link" aria-current="page" >Novo Cliente</Link>
+            <Link to="/app/novocliente" className="nav-link" aria-current="page" >Novo Funcionario</Link>
             </li>
             <li className="nav-item">
             <a href="/app" onClick={Logout} className="nav-link logout" aria-current="page" >Sair</a>

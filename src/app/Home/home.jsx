@@ -60,7 +60,7 @@ function Home(){
     return <div>
       <Navbar/>
       <div className="container-fluid titulo">
-        <h1>Cadastro de Clientes</h1>
+        <h1>Cadastro de Funcionarios</h1>
 
         <div className="row">
           <div className="col-4">
