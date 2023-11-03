@@ -70,3 +70,10 @@
     width: 25%;
     height: 114px;
 }
+
+.text-center{
+    align-items: center;
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+}

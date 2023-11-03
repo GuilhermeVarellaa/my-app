@@ -161,7 +161,7 @@ function EditarCliente(props) {
       <Navbar />
       <div className="container-fluid titulo">
         <div className="Forms">
-          <h2>fale-nos um pouco sobre você</h2>
+          <h2>Editar Cliente</h2>
 
           <form className="classform">
             <div className="informacoes">
@@ -257,7 +257,7 @@ function EditarCliente(props) {
                   placeholder="Data de nascimento"
                   onChange={(e) => setNascimento(e.target.value)}
                   value={nascimento}
-                  type="text"
+                  type="date"
                   className="input"
                   id="nascimentoInput"
                   aria-describedby="emailHelp"
@@ -269,7 +269,7 @@ function EditarCliente(props) {
               placeholder="Data de Admissão"
               onChange={(e) => setAdm(e.target.value)}
               value={adm}
-              type="text"
+              type="date"
               className="input"
               id="admInput"
               aria-describedby="emailHelp"
